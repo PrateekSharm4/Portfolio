@@ -13,8 +13,8 @@ export async function sendContactEmail(formData) {
 
   const ownerEmail = import.meta.env.VITE_OWNER_EMAIL || "prateek02105@gmail.com";
   const ownerPhone = import.meta.env.VITE_OWNER_PHONE || "+91 70151 06889";
-  const ownerLinkedIn = import.meta.env.VITE_OWNER_LINKEDIN || "https://linkedin.com/in/prateeksharma-dev";
-  const ownerGitHub = import.meta.env.VITE_OWNER_GITHUB || "https://github.com/prateeksharma-dev";
+  const ownerLinkedIn = import.meta.env.VITE_OWNER_LINKEDIN || "https://www.linkedin.com/in/prateek-sharma-b2b9732b0/";
+  const ownerGitHub = import.meta.env.VITE_OWNER_GITHUB || "https://github.com/PrateekSharm4";
   const ownerName = "Prateek Sharma";
 
   const isConfigured = Boolean(

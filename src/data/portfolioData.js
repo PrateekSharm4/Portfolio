@@ -5,8 +5,8 @@ export const personal = {
   bio: "I build fast, practical web applications, geospatial platforms, and IoT-connected systems with React, Node.js, and MongoDB—from live hospital bed telemetry to on-chain audit trails.",
   email: import.meta.env.VITE_OWNER_EMAIL || "prateek02105@gmail.com",
   phone: import.meta.env.VITE_OWNER_PHONE || "+91 70151 06889",
-  github: import.meta.env.VITE_OWNER_GITHUB || "https://github.com/prateeksharma-dev",
-  linkedin: import.meta.env.VITE_OWNER_LINKEDIN || "https://linkedin.com/in/prateeksharma-dev",
+  github: import.meta.env.VITE_OWNER_GITHUB || "https://github.com/PrateekSharm4",
+  linkedin: import.meta.env.VITE_OWNER_LINKEDIN || "https://www.linkedin.com/in/prateek-sharma-b2b9732b0/",
 };
 
 export const heroPillars = [
@@ -50,7 +50,7 @@ export const projects = [
       "ESP32",
     ],
     liveUrl: "https://swasthya-seva.vercel.app",
-    githubUrl: "https://github.com/prateeksharma-dev/swasthya-seva",
+    githubUrl: "https://github.com/PrateekSharm4/swasthya-seva",
   },
   {
     id: "02",
@@ -73,7 +73,7 @@ export const projects = [
       "Ethereum",
     ],
     liveUrl: null,
-    githubUrl: "https://github.com/prateeksharma-dev/transparency-chain",
+    githubUrl: "https://github.com/PrateekSharm4/transparency-chain",
   },
   {
     id: "03",
@@ -93,7 +93,7 @@ export const projects = [
       "Google Gemini API",
     ],
     liveUrl: null,
-    githubUrl: "https://github.com/prateeksharma-dev/jarvis-ai-assistant",
+    githubUrl: "https://github.com/PrateekSharm4/jarvis-ai-assistant",
   },
 ];
 
