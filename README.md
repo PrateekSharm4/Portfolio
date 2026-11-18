@@ -1,89 +1,61 @@
-# Prateek Sharma — Personal Portfolio
+# Prateek Sharma — Engineering Portfolio
 
-Clean, minimal, hand-coded portfolio website for **Prateek Sharma** (Full-Stack MERN & Hardware-Connected Systems Engineer), built with **React, Vite, Tailwind CSS, and Lucide React**.
+> **Full-Stack MERN & Hardware-Connected Systems Engineer**  
+> B.E. CSE (Hons. Full Stack Development), Chandigarh University.
 
----
-
-## ✦ Design Philosophy
-- **Authentic Hand-Built Aesthetic:** No glowing neon gradients, no cursor spotlights, no fake terminal widgets or pulsing badges.
-- **Palette:** Matte charcoal (`#0E0E10`) background, subtle elevated surface (`#16161A`), crisp `1px solid #26262C` borders, off-white text (`#F4F4F6`), and muted secondary text (`#A1A1AA`).
-- **Typography:** `Inter` for clean headlines/body and `JetBrains Mono` for tech tags and section metadata.
-- **Layout:** Centered single-column container (`max-w-4xl mx-auto px-6`) with generous whitespace, sharp alignment, and zero visual clutter.
-- **Zero Friction:** Everything is directly scannable on the page—no bento grids, filter pills, or pop-up modals.
+A high-depth, tactile, hand-crafted personal portfolio website built with **React, Vite, Tailwind CSS, and Lucide React**. Designed with an authentic, engineered feel—featuring a 3-layer elevation system, engineered dot-grid canvas, warm coral accents (`#FF6B4A`), and integrated visual architecture system flow diagrams.
 
 ---
 
-## 📂 File Structure
+## ✦ Visual Depth & Elevation Architecture
 
-```
-prateek-portfolio/
-├── index.html                   # HTML entry with Inter & JetBrains Mono fonts
-├── package.json                 # React, Vite, Tailwind CSS, Lucide React, EmailJS
-├── tailwind.config.js           # Matte charcoal theme & typography configuration
-├── .env.example                 # Environment variables template
-├── .env                         # Local environment settings
-└── src/
-    ├── main.jsx                 # Entry point
-    ├── App.jsx                  # Centered single-column layout
-    ├── index.css                # Minimal Tailwind base styles & subtle scrollbar
-    ├── data/
-    │   └── portfolioData.js     # Clean, centralized content (projects, stack, about)
-    ├── services/
-    │   └── emailService.js      # Dual EmailJS dispatches with safe simulation fallback
-    └── components/
-        ├── Navbar.jsx           # Sticky top bar with IntersectionObserver scroll-spy
-        ├── Hero.jsx             # Left-aligned typographic intro & action buttons
-        ├── Projects.jsx         # 3 clean vertically stacked project cards
-        ├── Stack.jsx            # 2-column key-value tech stack & milestone highlights
-        ├── About.jsx            # Single human paragraph (football & Himalayan motorcycle)
-        ├── Contact.jsx          # Direct two-column form & plain-text contact block
-        └── Footer.jsx           # Minimalist copyright line
-```
+1. **3-Layer Elevation System:**
+   - **Layer 1 (Page Canvas):** Deep obsidian-slate (`#0B0C0F`) overlaid with a subtle CSS radial dot-grid texture (`radial-gradient(#232734 1px, transparent 1px)` at `24px 24px` grid spacing).
+   - **Layer 2 (Elevated Slate Cards):** Rich dark slate (`#13151C`) with a crisp `1px solid rgba(255,255,255,0.07)` border, faint top-edge highlight (`shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]`), and ambient drop shadow (`shadow-xl shadow-black/40`).
+   - **Layer 3 (Interactive Hover Surface):** `#181B24` with smooth `transition-all duration-200 hover:-translate-y-0.5 hover:border-white/15`.
+2. **Warm Coral Accent System:**
+   - Primary buttons, section indices (`01 //`), and active scroll indicators styled in `#FF6B4A` (with hover `#FF5430` and soft `#FF6B4A]/10` badges).
+3. **Engineering Typography:**
+   - `Inter` for clean geometric headings and body copy.
+   - `JetBrains Mono` for section numbers, protocol labels, and architecture nodes.
 
 ---
 
-## 🚀 Getting Started
+## ✦ Page Sections
 
-1. **Clone or Open:** Open the folder in your IDE:
-   ```bash
-   cd C:\Users\prate\.gemini\antigravity\scratch\prateek-portfolio
-   ```
-
-2. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Start Development Server:**
-   ```bash
-   npm run dev
-   ```
-   Visit `http://localhost:5173/`.
-
-4. **Production Build:**
-   ```bash
-   npm run build
-   npm run preview
-   ```
+- **Sticky Glassmorphic Navbar (`Navbar.jsx`):**
+  - Left: Monogram badge `PS` in `#FF6B4A]/15` box + `Prateek Sharma` (scrolls to top).
+  - Center/Right: Direct links to `Projects`, `Stack`, `About`, `Contact` with `IntersectionObserver` active indicator bar + `Get in Touch` CTA.
+- **Asymmetric 2-Column Hero (`Hero.jsx`):**
+  - Left (7 cols): Location/degree badge, bold headline, sub-headline, bio, solid `#FF6B4A` CTA, dark secondary button, plain-text GitHub & LinkedIn links.
+  - Right (5 cols): 3-card tactile highlight stack summarizing Full-Stack & Geospatial, IoT & Edge Hardware, and Leadership & Open Source.
+- **Selected Projects with Visual System Flow Diagrams (`Projects.jsx`):**
+  - 3 horizontal split cards featuring project details on the left (60%) and clean, connected CSS/SVG system topology diagrams on the right (40%):
+    1. `Swasthya Seva — Real-Time Health Resource & Bed Telemetry PWA` (`ESP32 Bed Sensor` → `Node/Express API` → `MongoDB GeoJSON` → `Multilingual PWA`)
+    2. `Transparency Chain — Decentralized Public Fund Tracker` (`Fund Allocation` → `Solidity Escrow` → `Milestone Verify` → `Public Audit Ledger`)
+    3. `Jarvis — Hybrid Online/Offline AI Voice Assistant` (`Voice Capture` → `Intent Router` → `Offline OS Shell / Gemini API`)
+- **Tactile Stack & Milestones (`Stack.jsx`):**
+  - 2x2 grid of elevated cards with tactile pills (`Frontend`, `Backend & APIs`, `Database`, `Systems & IoT`), followed by a 3-column milestone strip.
+- **Beyond the Terminal (`About.jsx`):**
+  - 2-column elevated card pair: Competitive Football & Endurance (I-League 3rd Division box-to-box midfielder, 10k–12k runner) and High-Altitude Riding (Royal Enfield Meteor 350 at 3,895m Yulla Kanda).
+- **Interactive Contact & Dual EmailJS (`Contact.jsx`):**
+  - Left: Tactile dark inputs with validation for Name, Email, Mobile (`+91`), and Message.
+  - Right: Plain-text direct contact block with one-click copy buttons and post-submit confirmation banner confirming dispatch to `<visitor_email>`.
 
 ---
 
-## 📬 Contact Form & EmailJS
+## 🚀 Running the Project
 
-The contact form dispatches two emails:
-1. An automated thank-you email sent directly to the visitor's email with Prateek's verified contact details.
-2. An owner notification email sent to Prateek with the inquiry details.
+```bash
+# Navigate to the project directory
+cd C:\Users\prate\.gemini\antigravity\scratch\prateek-portfolio
 
-Configure in `.env`:
-```env
-VITE_EMAILJS_SERVICE_ID=service_xxxxxxx
-VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID=template_xxxxxxx
-VITE_EMAILJS_NOTIFY_TEMPLATE_ID=template_xxxxxxx
-VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxxxxxxx
-VITE_OWNER_EMAIL=prateeksharma.dev@gmail.com
-VITE_OWNER_PHONE="+91 98765 43210"
-VITE_OWNER_LINKEDIN=https://linkedin.com/in/prateeksharma-dev
-VITE_OWNER_GITHUB=https://github.com/prateeksharma-dev
+# Start the Vite development server
+npm run dev
+
+# Or test the production build
+npm run build
+npm run preview
 ```
 
-If keys are not provided, the form runs safely in local simulation fallback mode without throwing errors.
+Visit `http://localhost:5173/` in your browser.

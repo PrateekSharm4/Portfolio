@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { personal } from '../data/portfolioData';
 
 const SECTIONS = [
@@ -9,48 +9,8 @@ const SECTIONS = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export default function Navbar() {
-  const [activeSection, setActiveSection] = useState('home');
+export default function Navbar({ activeSection }) {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const sectionIds = ['home', 'projects', 'stack', 'about', 'contact'];
-    const elements = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
-
-    if (!('IntersectionObserver' in window)) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: '-30% 0px -60% 0px',
-        threshold: 0,
-      }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-
-    const handleScroll = () => {
-      if (window.scrollY < 80) {
-        setActiveSection('home');
-      } else if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
-        setActiveSection('contact');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      elements.forEach((el) => observer.unobserve(el));
-      window.removeEventListener('scroll', handleScroll);
-      observer.disconnect();
-    };
-  }, []);
 
   const scrollTo = (id) => {
     setMenuOpen(false);
@@ -61,39 +21,58 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#0E0E10]/90 backdrop-blur-sm border-b border-[#26262C]">
-      <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full bg-[#0B0C0F]/80 backdrop-blur-md border-b border-white/[0.07] transition-all">
+      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         
-        {/* Left: Clean plain name */}
+        {/* Left: Monogram Badge & Name */}
         <button
           onClick={() => scrollTo('home')}
-          className="text-sm font-semibold tracking-tight text-[#F4F4F6] hover:text-white transition-colors duration-150"
+          className="group flex items-center gap-3 text-left focus:outline-none"
+          aria-label="Scroll to home"
         >
-          {personal.name}
+          <div className="w-8 h-8 rounded-md bg-[#FF6B4A]/10 border border-[#FF6B4A]/30 flex items-center justify-center font-mono text-xs font-bold text-[#FF6B4A] group-hover:bg-[#FF6B4A]/20 transition-colors">
+            PS
+          </div>
+          <span className="text-sm font-semibold tracking-tight text-[#F4F4F6] group-hover:text-white transition-colors">
+            {personal.name}
+          </span>
         </button>
 
         {/* Right Desktop Nav Links */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm" aria-label="Main Navigation">
-          {SECTIONS.map((sec) => {
-            const isActive = activeSection === sec.id;
-            return (
-              <button
-                key={sec.id}
-                onClick={() => scrollTo(sec.id)}
-                className={`transition-colors duration-150 ${
-                  isActive ? 'text-[#F4F4F6] font-medium' : 'text-[#A1A1AA] hover:text-[#F4F4F6]'
-                }`}
-              >
-                {sec.label}
-              </button>
-            );
-          })}
-        </nav>
+        <div className="hidden md:flex items-center space-x-8">
+          <nav className="flex items-center space-x-7 text-xs font-mono uppercase tracking-wider" aria-label="Main Navigation">
+            {SECTIONS.map((sec) => {
+              const isActive = activeSection === sec.id;
+              return (
+                <button
+                  key={sec.id}
+                  onClick={() => scrollTo(sec.id)}
+                  className={`relative py-1 transition-colors duration-150 ${
+                    isActive ? 'text-[#F4F4F6] font-semibold' : 'text-[#A1A1AA] hover:text-[#F4F4F6]'
+                  }`}
+                >
+                  {sec.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#FF6B4A] rounded-full" />
+                  )}
+                </button>
+              );
+            })}
+          </nav>
+
+          <button
+            onClick={() => scrollTo('contact')}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#13151C] border border-white/[0.1] text-xs font-mono text-[#F4F4F6] hover:border-[#FF6B4A]/50 hover:bg-[#181B24] transition-all"
+          >
+            <span>Get in Touch</span>
+            <ArrowUpRight className="w-3 h-3 text-[#FF6B4A]" />
+          </button>
+        </div>
 
         {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-1.5 text-[#A1A1AA] hover:text-[#F4F4F6] transition-colors duration-150"
+          className="md:hidden p-2 text-[#A1A1AA] hover:text-[#F4F4F6] focus:outline-none"
           aria-label="Toggle Navigation Menu"
         >
           {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -103,16 +82,30 @@ export default function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {menuOpen && (
-        <div className="md:hidden border-b border-[#26262C] bg-[#0E0E10] px-6 py-4 space-y-3">
-          {SECTIONS.map((sec) => (
+        <div className="md:hidden border-b border-white/[0.07] bg-[#0E1015]/95 backdrop-blur-lg px-6 py-4 space-y-3">
+          {SECTIONS.map((sec) => {
+            const isActive = activeSection === sec.id;
+            return (
+              <button
+                key={sec.id}
+                onClick={() => scrollTo(sec.id)}
+                className={`flex items-center justify-between w-full text-left text-sm py-2 transition-colors ${
+                  isActive ? 'text-[#FF6B4A] font-semibold' : 'text-[#A1A1AA] hover:text-[#F4F4F6]'
+                }`}
+              >
+                <span>{sec.label}</span>
+                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B4A]" />}
+              </button>
+            );
+          })}
+          <div className="pt-2 border-t border-white/[0.06]">
             <button
-              key={sec.id}
-              onClick={() => scrollTo(sec.id)}
-              className="block w-full text-left text-sm text-[#A1A1AA] hover:text-[#F4F4F6] transition-colors duration-150 py-1"
+              onClick={() => scrollTo('contact')}
+              className="w-full py-2.5 rounded-md bg-[#FF6B4A] text-[#0B0C0F] text-xs font-mono font-bold uppercase tracking-wider text-center"
             >
-              {sec.label}
+              Get in Touch
             </button>
-          ))}
+          </div>
         </div>
       )}
     </header>
