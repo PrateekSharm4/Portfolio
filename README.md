@@ -35,9 +35,9 @@ A high-depth, tactile, hand-crafted personal portfolio website built with **Reac
     2. `Transparency Chain — Decentralized Public Fund Tracker` (`Fund Allocation` → `Solidity Escrow` → `Milestone Verify` → `Public Audit Ledger`)
     3. `Jarvis — Hybrid Online/Offline AI Voice Assistant` (`Voice Capture` → `Intent Router` → `Offline OS Shell / Gemini API`)
 - **Tactile Stack & Milestones (`Stack.jsx`):**
-  - 2x2 grid of elevated cards with tactile pills (`Frontend`, `Backend & APIs`, `Database`, `Systems & IoT`), followed by a 3-column milestone strip.
+  - 2x2 grid of elevated cards with tactile pills (`Frontend`, `Backend & APIs`, `Database`, `Systems & IoT`), followed by a 2-column milestone strip.
 - **Beyond the Terminal (`About.jsx`):**
-  - 2-column elevated card pair: Competitive Football & Endurance (I-League 3rd Division box-to-box midfielder, 10k–12k runner) and High-Altitude Riding (Royal Enfield Meteor 350 at 3,895m Yulla Kanda).
+  - 2-column elevated card pair: Competitive Football & Endurance (I-League 3rd Division box-to-box midfielder, 10k–12k runner) and High-Altitude Riding (Royal Enfield Meteor 350 Himalayan expeditionist).
 - **Interactive Contact & Dual EmailJS (`Contact.jsx`):**
   - Left: Tactile dark inputs with validation for Name, Email, Mobile (`+91`), and Message.
   - Right: Plain-text direct contact block with one-click copy buttons and post-submit confirmation banner confirming dispatch to `<visitor_email>`.

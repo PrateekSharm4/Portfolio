@@ -77,7 +77,7 @@ export default function Stack() {
           <span className="h-[1px] flex-1 bg-white/[0.06]" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-white/[0.06]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/[0.06]">
           {milestones.map((m, idx) => {
             const MIcon = milestoneIcons[idx] || Trophy;
             return (

@@ -94,7 +94,7 @@ export default function Contact() {
           {/* Left Column (7 cols) — Form */}
           <div className="lg:col-span-7 space-y-6">
             
-            <div className="pb-4 border-b border-white/[0.06] flex items-center justify-between">
+            <div className="pb-4 border-b border-white/[0.06]">
               <div>
                 <h3 className="text-base font-semibold text-[#F4F4F6]">
                   Send Inquiry & Get Contact Card
@@ -103,9 +103,6 @@ export default function Contact() {
                   Automated thank-you email will deliver Prateek's direct channels.
                 </p>
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FF6B4A]/10 text-[#FF6B4A] border border-[#FF6B4A]/30">
-                ACTIVE PIPELINE
-              </span>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>

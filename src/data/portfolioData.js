@@ -133,13 +133,12 @@ export const stackCategories = [
   },
   {
     category: "Systems & IoT",
-    tag: "Hardware & Web3",
+    tag: "Hardware & Embedded",
     items: [
       "Python",
       "C/C++",
       "ESP32",
       "Hi-Link HLK-LD2410B mmWave Radar",
-      "Solidity",
       "Git/GitHub",
     ],
   },
@@ -156,11 +155,6 @@ export const milestones = [
     title: "AI Fest 2026 & Campus Tank",
     project: "Chandigarh University",
   },
-  {
-    role: "Open Source",
-    title: "Developer Tooling & Systems",
-    project: "Public Repositories",
-  },
 ];
 
 export const aboutCards = [
@@ -175,7 +169,7 @@ export const aboutCards = [
     id: "motorcycle",
     index: "02 //",
     title: "High-Altitude Riding & Filmmaking",
-    tagline: "Royal Enfield Meteor 350 · Yulla Kanda at 3,895m",
-    body: "Long-distance motorcyclist on a Royal Enfield Meteor 350 navigating high-altitude Himalayan passes, including solo ascents like Yulla Kanda (Kinnaur) at 3,895 meters above sea level. Handling machine telemetry in sub-zero passes translates directly to software reliability: design for unexpected failures, maintain composure under ambiguity, and verify every system.",
+    tagline: "Royal Enfield Meteor 350 · Himalayan Expeditionist",
+    body: "Long-distance motorcyclist on a Royal Enfield Meteor 350 navigating high-altitude Himalayan mountain passes and creating travel films. Handling mechanical reliability in sub-zero passes translates directly to software engineering: design for unexpected failures, maintain composure under ambiguity, and verify every system.",
   },
 ];
