@@ -20,8 +20,7 @@ export async function sendContactEmail(formData) {
   const isConfigured = Boolean(
     serviceId &&
     publicKey &&
-    autoReplyTemplateId &&
-    notifyTemplateId &&
+    (autoReplyTemplateId || notifyTemplateId) &&
     publicKey !== 'your_emailjs_public_key_here'
   );
 
@@ -43,6 +42,9 @@ export async function sendContactEmail(formData) {
       to_name: formData.name,
       to_email: formData.email,
       recipient_email: formData.email,
+      user_email: formData.email,
+      email: formData.email,
+      visitor_name: formData.name,
       owner_name: ownerName,
       owner_email: ownerEmail,
       owner_phone: ownerPhone,
@@ -54,16 +56,33 @@ export async function sendContactEmail(formData) {
     // 2. Notification to Prateek with lead details
     const notifyParams = {
       visitor_name: formData.name,
+      from_name: formData.name,
+      name: formData.name,
+      user_name: formData.name,
       visitor_email: formData.email,
+      from_email: formData.email,
+      email: formData.email,
+      user_email: formData.email,
+      reply_to: formData.email,
       visitor_phone: `+91 ${formData.phone}`,
+      phone: `+91 ${formData.phone}`,
       visitor_message: formData.message || "No message entered.",
+      message: formData.message || "No message entered.",
       owner_email: ownerEmail,
+      to_email: ownerEmail,
     };
 
-    await Promise.all([
-      emailjs.send(serviceId, autoReplyTemplateId, autoReplyParams),
-      emailjs.send(serviceId, notifyTemplateId, notifyParams)
-    ]);
+    const dispatches = [];
+    if (notifyTemplateId) {
+      dispatches.push(emailjs.send(serviceId, notifyTemplateId, notifyParams));
+    }
+    if (autoReplyTemplateId) {
+      dispatches.push(emailjs.send(serviceId, autoReplyTemplateId, autoReplyParams));
+    }
+
+    if (dispatches.length > 0) {
+      await Promise.all(dispatches);
+    }
 
     return { success: true, simulated: false };
   } catch (error) {
