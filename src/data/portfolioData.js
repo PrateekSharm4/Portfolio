@@ -22,7 +22,7 @@ export const heroPillars = [
   },
   {
     title: "Leadership & Open Source",
-    detail: "NextGen Hackathon Team Lead · GSoC '26 Contributor",
+    detail: "NextGen Hackathon Team Lead · Open Source Contributor",
     category: "Milestones",
   },
 ];
@@ -74,7 +74,7 @@ export const projects = [
       "Solidity",
       "Ethereum",
     ],
-    liveUrl: "https://transparency-chain.vercel.app",
+    liveUrl: null,
     githubUrl: "https://github.com/prateeksharma-dev/transparency-chain",
   },
   {
@@ -160,9 +160,9 @@ export const milestones = [
     project: "Chandigarh University",
   },
   {
-    role: "Contributor",
-    title: "Google Summer of Code (GSoC) 2026",
-    project: "Registered Contributor",
+    role: "Open Source",
+    title: "Developer Tooling & Systems",
+    project: "Public Repositories",
   },
 ];
 
