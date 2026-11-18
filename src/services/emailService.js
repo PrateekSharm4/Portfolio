@@ -11,8 +11,8 @@ export async function sendContactEmail(formData) {
   const notifyTemplateId = import.meta.env.VITE_EMAILJS_NOTIFY_TEMPLATE_ID;
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-  const ownerEmail = import.meta.env.VITE_OWNER_EMAIL || "prateeksharma.dev@gmail.com";
-  const ownerPhone = import.meta.env.VITE_OWNER_PHONE || "+91 98765 43210";
+  const ownerEmail = import.meta.env.VITE_OWNER_EMAIL || "prateek02105@gmail.com";
+  const ownerPhone = import.meta.env.VITE_OWNER_PHONE || "+91 70151 06889";
   const ownerLinkedIn = import.meta.env.VITE_OWNER_LINKEDIN || "https://linkedin.com/in/prateeksharma-dev";
   const ownerGitHub = import.meta.env.VITE_OWNER_GITHUB || "https://github.com/prateeksharma-dev";
   const ownerName = "Prateek Sharma";

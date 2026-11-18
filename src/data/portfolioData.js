@@ -3,8 +3,8 @@ export const personal = {
   locationPill: "Chandigarh, India · B.E. CSE (Full Stack Dev)",
   role: "Full-Stack MERN & Hardware-Connected Systems Engineer",
   bio: "I build fast, practical web applications, geospatial platforms, and IoT-connected systems with React, Node.js, and MongoDB—from live hospital bed telemetry to on-chain audit trails.",
-  email: import.meta.env.VITE_OWNER_EMAIL || "prateeksharma.dev@gmail.com",
-  phone: import.meta.env.VITE_OWNER_PHONE || "+91 98765 43210",
+  email: import.meta.env.VITE_OWNER_EMAIL || "prateek02105@gmail.com",
+  phone: import.meta.env.VITE_OWNER_PHONE || "+91 70151 06889",
   github: import.meta.env.VITE_OWNER_GITHUB || "https://github.com/prateeksharma-dev",
   linkedin: import.meta.env.VITE_OWNER_LINKEDIN || "https://linkedin.com/in/prateeksharma-dev",
 };
