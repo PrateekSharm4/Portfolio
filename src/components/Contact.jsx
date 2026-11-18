@@ -83,7 +83,7 @@ export default function Contact() {
           Contact Me
         </h2>
         <p className="text-sm text-[#A1A1AA] max-w-xl">
-          Interested in full-stack engineering roles, IoT telemetry deployments, or hackathon collaboration? Reach out below to receive my verified contact details.
+          Interested in full-stack engineering roles, IoT telemetry deployments, or hackathon collaboration? Reach out below to receive my direct contact details.
         </p>
       </div>
 

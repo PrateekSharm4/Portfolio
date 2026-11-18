@@ -151,12 +151,6 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Diagram Footer */}
-                <div className="mt-4 pt-3 border-t border-white/[0.05] flex items-center justify-between text-[10px] font-mono text-[#71717A]">
-                  <span>{proj.flowTitle}</span>
-                  <span className="text-[#FF6B4A]">Verified</span>
-                </div>
-
               </div>
 
             </div>

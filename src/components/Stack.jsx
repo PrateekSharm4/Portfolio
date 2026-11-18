@@ -73,7 +73,7 @@ export default function Stack() {
       {/* 3-Column Milestone Bar Below */}
       <div className="mt-10 card-elevation p-6 rounded-2xl border border-white/[0.08]">
         <div className="text-xs font-mono uppercase tracking-wider text-[#FF6B4A] font-semibold mb-4 flex items-center gap-2">
-          <span>Verified Milestones</span>
+          <span>Engineering Milestones</span>
           <span className="h-[1px] flex-1 bg-white/[0.06]" />
         </div>
 

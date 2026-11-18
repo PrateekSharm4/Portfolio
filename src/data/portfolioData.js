@@ -34,7 +34,6 @@ export const projects = [
     title: "Swasthya Seva — Real-Time Health Resource & Bed Telemetry PWA",
     summary:
       "Multilingual Progressive Web App helping residents in Chandigarh find nearby clinics via radius-based geospatial queries and check live hospital bed availability streamed from ESP32 sensors.",
-    flowTitle: "System Topology & Ingest Pipeline",
     flowNodes: [
       { step: "01", label: "ESP32 Bed Sensor", sub: "mmWave / MQTT" },
       { step: "02", label: "Node/Express API", sub: "WebSockets Ingest" },
@@ -59,7 +58,6 @@ export const projects = [
     title: "Transparency Chain — Decentralized Public Fund Tracker",
     summary:
       "Web3 anti-corruption prototype dApp enabling transparent public fund allocation and tamper-proof milestone verification. Built as Team Leader of The Dev Team for NextGen Hackathon 2025.",
-    flowTitle: "Smart Contract Escrow Pipeline",
     flowNodes: [
       { step: "01", label: "Fund Allocation", sub: "Treasury Lock" },
       { step: "02", label: "Solidity Escrow", sub: "EVM Contract" },
@@ -83,7 +81,6 @@ export const projects = [
     title: "Jarvis — Hybrid Online/Offline AI Voice Assistant",
     summary:
       "Dual-mode desktop voice assistant that executes local OS commands offline and routes natural-language reasoning tasks to the Gemini API when online.",
-    flowTitle: "Dual-Router Orchestration Engine",
     flowNodes: [
       { step: "01", label: "Voice Capture", sub: "Acoustic Stream" },
       { step: "02", label: "Intent Router", sub: "Sub-40ms Classification" },
