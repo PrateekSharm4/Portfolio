@@ -49,8 +49,8 @@ export const projects = [
       "Google OAuth",
       "ESP32",
     ],
-    liveUrl: "https://swasthya-seva.vercel.app",
-    githubUrl: "https://github.com/PrateekSharm4/swasthya-seva",
+    liveUrl: "https://swasthyasevaindia.vercel.app",
+    githubUrl: "https://github.com/PrateekSharm4/SwasthyaSeva",
   },
   {
     id: "02",
@@ -73,7 +73,7 @@ export const projects = [
       "Ethereum",
     ],
     liveUrl: null,
-    githubUrl: "https://github.com/PrateekSharm4/transparency-chain",
+    githubUrl: "https://github.com/PrateekSharm4/transpiracy_chain",
   },
   {
     id: "03",
@@ -93,7 +93,7 @@ export const projects = [
       "Google Gemini API",
     ],
     liveUrl: null,
-    githubUrl: "https://github.com/PrateekSharm4/jarvis-ai-assistant",
+    githubUrl: "https://github.com/PrateekSharm4/jarvis",
   },
 ];
 
