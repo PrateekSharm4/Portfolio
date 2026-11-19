@@ -6,10 +6,10 @@ import emailjs from '@emailjs/browser';
  * 2. Automated thank-you email with contact details to the visitor (template_4ojjnvs)
  */
 export async function sendContactEmail(formData) {
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const notifyTemplateId = import.meta.env.VITE_EMAILJS_NOTIFY_TEMPLATE_ID;
-  const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID;
-  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_s4gjdwe";
+  const notifyTemplateId = import.meta.env.VITE_EMAILJS_NOTIFY_TEMPLATE_ID || "template_kt2zlxr";
+  const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID || "template_4ojjnvs";
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "5bol4ZLLmk64wl7-0";
 
   const ownerEmail = import.meta.env.VITE_OWNER_EMAIL || "prateek02105@gmail.com";
   const ownerPhone = import.meta.env.VITE_OWNER_PHONE || "+91 70151 06889";
