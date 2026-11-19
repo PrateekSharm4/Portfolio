@@ -2,34 +2,29 @@ import emailjs from '@emailjs/browser';
 
 /**
  * Sends both:
- * 1. An automated thank-you email to the visitor containing Prateek's contact details
- * 2. An inquiry notification email to Prateek
+ * 1. Inquiry lead notification to Prateek (template_kt2zlxr)
+ * 2. Automated thank-you email with contact details to the visitor (template_4ojjnvs)
  */
 export async function sendContactEmail(formData) {
   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID;
   const notifyTemplateId = import.meta.env.VITE_EMAILJS_NOTIFY_TEMPLATE_ID;
+  const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID;
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
   const ownerEmail = import.meta.env.VITE_OWNER_EMAIL || "prateek02105@gmail.com";
   const ownerPhone = import.meta.env.VITE_OWNER_PHONE || "+91 70151 06889";
   const ownerLinkedIn = import.meta.env.VITE_OWNER_LINKEDIN || "https://www.linkedin.com/in/prateek-sharma-b2b9732b0/";
   const ownerGitHub = import.meta.env.VITE_OWNER_GITHUB || "https://github.com/PrateekSharm4";
-  const ownerName = "Prateek Sharma";
+  const ownerName = import.meta.env.VITE_OWNER_NAME || "Prateek Sharma";
 
   const isConfigured = Boolean(
     serviceId &&
     publicKey &&
-    (autoReplyTemplateId || notifyTemplateId) &&
-    publicKey !== 'your_emailjs_public_key_here'
+    (notifyTemplateId || autoReplyTemplateId)
   );
 
-  // Safe fallback if keys aren't configured yet
   if (!isConfigured) {
-    console.info(
-      "[EmailJS Fallback Mode]: Service keys not configured in .env. Simulating auto-reply to:",
-      formData.email
-    );
+    console.info("[EmailJS]: Service not configured, simulated success.");
     await new Promise((resolve) => setTimeout(resolve, 600));
     return { success: true, simulated: true };
   }
@@ -37,37 +32,15 @@ export async function sendContactEmail(formData) {
   try {
     emailjs.init(publicKey);
 
-    // 1. Auto-reply to visitor with Prateek's contact information (sent to visitor's email)
-    const autoReplyParams = {
-      to_name: formData.name,
-      to_email: formData.email,
-      recipient_email: formData.email, // Delivers to visitor!
-      user_email: formData.email,
-      name: formData.name,
-      visitor_name: formData.name,
-      visitor_email: formData.email,
-      visitor_phone: `+91 ${formData.phone}`,
-      email: ownerEmail,
-      owner_email: ownerEmail,
-      mobile: ownerPhone,
-      phone: ownerPhone,
-      owner_phone: ownerPhone,
-      linkedin: ownerLinkedIn,
-      owner_linkedin: ownerLinkedIn,
-      github: ownerGitHub,
-      owner_github: ownerGitHub,
-      message: formData.message || "Thank you for reaching out. Here are my direct contact details.",
-    };
-
-    // 2. Notification to Prateek with lead details (sent to prateek02105@gmail.com)
+    // 1. Notification to Prateek (template_kt2zlxr)
     const notifyParams = {
       to_name: ownerName,
       to_email: ownerEmail,
       recipient_email: ownerEmail,
       owner_email: ownerEmail,
       visitor_name: formData.name,
-      from_name: formData.name,
       name: formData.name,
+      from_name: formData.name,
       user_name: formData.name,
       visitor_email: formData.email,
       from_email: formData.email,
@@ -80,26 +53,50 @@ export async function sendContactEmail(formData) {
       message: formData.message || "No message entered.",
     };
 
+    // 2. Thank-You Auto-Reply to the Visitor (template_4ojjnvs)
+    const autoReplyParams = {
+      recipient_email: formData.email, // Sent strictly to the visitor
+      to_email: formData.email,
+      user_email: formData.email,
+      to_name: formData.name,
+      name: formData.name,
+      visitor_name: formData.name,
+      visitor_email: formData.email,
+      email: ownerEmail,
+      owner_email: ownerEmail,
+      mobile: ownerPhone,
+      phone: ownerPhone,
+      owner_phone: ownerPhone,
+      owner_mobile: ownerPhone,
+      linkedin: ownerLinkedIn,
+      owner_linkedin: ownerLinkedIn,
+      github: ownerGitHub,
+      owner_github: ownerGitHub,
+      message: formData.message || "Thank you for reaching out via my portfolio. Here are my direct contact details.",
+    };
+
     let atLeastOneSuccess = false;
     let lastError = null;
 
-    if (notifyTemplateId && notifyTemplateId !== 'undefined' && notifyTemplateId !== '') {
+    // Send lead notification to Prateek
+    if (notifyTemplateId) {
       try {
         await emailjs.send(serviceId, notifyTemplateId, notifyParams);
         atLeastOneSuccess = true;
       } catch (err) {
-        console.warn("[EmailJS Notify Template Warning]:", err);
+        console.warn("[EmailJS Notify Warning]:", err);
         lastError = err?.text || err?.message;
       }
     }
 
-    if (autoReplyTemplateId && autoReplyTemplateId !== notifyTemplateId) {
+    // Send thank-you auto-reply to visitor
+    if (autoReplyTemplateId) {
       try {
         await emailjs.send(serviceId, autoReplyTemplateId, autoReplyParams);
         atLeastOneSuccess = true;
       } catch (err) {
-        console.warn("[EmailJS AutoReply Template Warning]:", err);
-        lastError = err?.text || err?.message;
+        console.warn("[EmailJS AutoReply Warning]:", err);
+        if (!lastError) lastError = err?.text || err?.message;
       }
     }
 
@@ -110,9 +107,9 @@ export async function sendContactEmail(formData) {
     }
   } catch (error) {
     console.error("[EmailJS Error]:", error);
-    return { 
-      success: false, 
-      error: error?.text || error?.message || 'EmailJS failed to deliver the message.' 
+    return {
+      success: false,
+      error: error?.text || error?.message || 'Failed to dispatch email.',
     };
   }
 }

@@ -63,11 +63,11 @@ export default function Contact() {
         setFormData({ name: '', email: '', phone: '', message: '' });
         setErrors({});
       } else {
-        setSubmissionError(res.error || 'Email dispatch failed. Please check your EmailJS Public Key.');
+        setSubmissionError(res.error || 'Message dispatch failed. Please try again.');
       }
     } catch (err) {
       console.error(err);
-      setSubmissionError('Network error while connecting to EmailJS.');
+      setSubmissionError('Network error while connecting to server.');
     } finally {
       setIsSubmitting(false);
     }
