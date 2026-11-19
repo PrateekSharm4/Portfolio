@@ -41,16 +41,20 @@ export async function sendContactEmail(formData) {
     const autoReplyParams = {
       to_name: formData.name,
       to_email: formData.email,
-      recipient_email: formData.email,
+      recipient_email: formData.email, // Delivers to visitor!
       user_email: formData.email,
-      email: formData.email,
+      name: formData.name,
       visitor_name: formData.name,
       visitor_email: formData.email,
       visitor_phone: `+91 ${formData.phone}`,
-      owner_name: ownerName,
+      email: ownerEmail,
       owner_email: ownerEmail,
+      mobile: ownerPhone,
+      phone: ownerPhone,
       owner_phone: ownerPhone,
+      linkedin: ownerLinkedIn,
       owner_linkedin: ownerLinkedIn,
+      github: ownerGitHub,
       owner_github: ownerGitHub,
       message: formData.message || "Thank you for reaching out. Here are my direct contact details.",
     };
