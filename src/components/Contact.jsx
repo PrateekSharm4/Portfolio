@@ -48,18 +48,26 @@ export default function Contact() {
     }
   };
 
+  const [submissionError, setSubmissionError] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setSubmissionError(null);
     try {
-      await sendContactEmail(formData);
-      setSubmittedEmail(formData.email);
-      setFormData({ name: '', email: '', phone: '', message: '' });
-      setErrors({});
+      const res = await sendContactEmail(formData);
+      if (res.success) {
+        setSubmittedEmail(formData.email);
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        setErrors({});
+      } else {
+        setSubmissionError(res.error || 'Email dispatch failed. Please check your EmailJS Public Key.');
+      }
     } catch (err) {
       console.error(err);
+      setSubmissionError('Network error while connecting to EmailJS.');
     } finally {
       setIsSubmitting(false);
     }
@@ -196,6 +204,13 @@ export default function Contact() {
                   className="w-full px-4 py-2.5 rounded-lg bg-[#0E1015] border border-white/10 focus:border-[#FF6B4A] focus:ring-1 focus:ring-[#FF6B4A] text-sm text-[#F4F4F6] placeholder-[#52525B] focus:outline-none transition-colors resize-none"
                 />
               </div>
+
+              {/* Submission Error Alert */}
+              {submissionError && (
+                <div className="p-3 rounded-lg border border-red-500/30 bg-red-500/10 text-xs font-mono text-red-400">
+                  {submissionError}
+                </div>
+              )}
 
               {/* Submit Button */}
               <button

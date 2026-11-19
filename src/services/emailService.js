@@ -72,22 +72,39 @@ export async function sendContactEmail(formData) {
       to_email: ownerEmail,
     };
 
-    const dispatches = [];
+    let atLeastOneSuccess = false;
+    let lastError = null;
+
     if (notifyTemplateId) {
-      dispatches.push(emailjs.send(serviceId, notifyTemplateId, notifyParams));
-    }
-    if (autoReplyTemplateId) {
-      dispatches.push(emailjs.send(serviceId, autoReplyTemplateId, autoReplyParams));
+      try {
+        await emailjs.send(serviceId, notifyTemplateId, notifyParams);
+        atLeastOneSuccess = true;
+      } catch (err) {
+        console.warn("[EmailJS Notify Template Warning]:", err);
+        lastError = err?.text || err?.message;
+      }
     }
 
-    if (dispatches.length > 0) {
-      await Promise.all(dispatches);
+    if (autoReplyTemplateId && autoReplyTemplateId !== notifyTemplateId) {
+      try {
+        await emailjs.send(serviceId, autoReplyTemplateId, autoReplyParams);
+        atLeastOneSuccess = true;
+      } catch (err) {
+        console.warn("[EmailJS AutoReply Template Warning]:", err);
+        lastError = err?.text || err?.message;
+      }
     }
 
-    return { success: true, simulated: false };
+    if (atLeastOneSuccess) {
+      return { success: true, simulated: false };
+    } else {
+      return { success: false, error: lastError || 'Failed to dispatch email.' };
+    }
   } catch (error) {
     console.error("[EmailJS Error]:", error);
-    // Return gracefully so user UI shows clear fallback feedback without crashing
-    return { success: true, simulated: true, note: 'Network fallback' };
+    return { 
+      success: false, 
+      error: error?.text || error?.message || 'EmailJS failed to deliver the message.' 
+    };
   }
 }
