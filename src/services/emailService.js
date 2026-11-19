@@ -37,7 +37,7 @@ export async function sendContactEmail(formData) {
   try {
     emailjs.init(publicKey);
 
-    // 1. Auto-reply to visitor with Prateek's contact information
+    // 1. Auto-reply to visitor with Prateek's contact information (sent to visitor's email)
     const autoReplyParams = {
       to_name: formData.name,
       to_email: formData.email,
@@ -45,6 +45,8 @@ export async function sendContactEmail(formData) {
       user_email: formData.email,
       email: formData.email,
       visitor_name: formData.name,
+      visitor_email: formData.email,
+      visitor_phone: `+91 ${formData.phone}`,
       owner_name: ownerName,
       owner_email: ownerEmail,
       owner_phone: ownerPhone,
@@ -53,8 +55,12 @@ export async function sendContactEmail(formData) {
       message: formData.message || "Thank you for reaching out. Here are my direct contact details.",
     };
 
-    // 2. Notification to Prateek with lead details
+    // 2. Notification to Prateek with lead details (sent to prateek02105@gmail.com)
     const notifyParams = {
+      to_name: ownerName,
+      to_email: ownerEmail,
+      recipient_email: ownerEmail,
+      owner_email: ownerEmail,
       visitor_name: formData.name,
       from_name: formData.name,
       name: formData.name,
@@ -68,14 +74,12 @@ export async function sendContactEmail(formData) {
       phone: `+91 ${formData.phone}`,
       visitor_message: formData.message || "No message entered.",
       message: formData.message || "No message entered.",
-      owner_email: ownerEmail,
-      to_email: ownerEmail,
     };
 
     let atLeastOneSuccess = false;
     let lastError = null;
 
-    if (notifyTemplateId) {
+    if (notifyTemplateId && notifyTemplateId !== 'undefined' && notifyTemplateId !== '') {
       try {
         await emailjs.send(serviceId, notifyTemplateId, notifyParams);
         atLeastOneSuccess = true;
